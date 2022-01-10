@@ -2,7 +2,7 @@
 
 Mixpanel integration for use with React Native apps built on Expo.
 
-Forked from `@bothrs/expo-mixpanel-analytics` to add functionality that simulates Mixpanel's `time_event` function
+Forked from `@bothrs/expo-mixpanel-analytics` to add functionality that simulates Mixpanel's `time_event` function.
 
 ## Installation
 
