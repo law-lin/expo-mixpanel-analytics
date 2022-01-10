@@ -9,9 +9,6 @@
     "build": "rimraf dist src/index.js && tsc",
     "prepublishOnly": "npm run build"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/law-lin/expo-mixpanel-analytics.git"
