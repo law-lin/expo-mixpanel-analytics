@@ -15,6 +15,7 @@ export class ExpoMixpanelAnalytics {
   model?: string;
   queue: any[] = [];
   constants: { [key: string]: string | number | void } = {};
+  timers: { [key: string]: number } = {};
   superProps: any = {};
 
   constructor(token, storageKey = "mixpanel:super:props") {
@@ -32,6 +33,7 @@ export class ExpoMixpanelAnalytics {
       expo_app_ownership: Constants.appOwnership || undefined,
       os_version: Platform.Version,
     };
+    this.timers = {};
 
     Constants.getWebViewUserAgentAsync().then((userAgent) => {
       // @ts-ignore
@@ -73,7 +75,13 @@ export class ExpoMixpanelAnalytics {
     } catch {}
   }
 
-  track(name: string, props?: any) {
+  track(name: string, props: any = {}) {
+    const startTimestamp = this._removeEventTimer(name);
+    if (startTimestamp) {
+      const durationInMs = new Date().getTime() - startTimestamp;
+      props["$duration"] = parseFloat((durationInMs / 1000).toFixed(3));
+    }
+
     this.queue.push({
       name,
       props,
@@ -120,6 +128,10 @@ export class ExpoMixpanelAnalytics {
     this._people("delete", "");
   }
 
+  time_event(name: string) {
+    this.timers[name] = new Date().getTime();
+  }
+
   // ===========================================================================================
 
   _flush() {
@@ -141,6 +153,14 @@ export class ExpoMixpanelAnalytics {
 
       this._pushProfile(data);
     }
+  }
+
+  _removeEventTimer(name) {
+    const timestamp = this.timers[name];
+    if (timestamp) {
+      delete this.timers[name];
+    }
+    return timestamp;
   }
 
   _pushEvent(event) {

@@ -1,24 +1,33 @@
-Expo Mixpanel Analytics
-=========
+# Expo Mixpanel Analytics
 
 Mixpanel integration for use with React Native apps built on Expo.
 
-Forked from `@benawad/expo-mixpanel-analytics` to add support for Expo 39.
+Forked from `@bothrs/expo-mixpanel-analytics` to add functionality that simulates Mixpanel's `time_event` function
 
 ## Installation
 
+npm:
+
 ```
-npm install @benawad/expo-mixpanel-analytics --save
+npm install @lawlin/expo-mixpanel-analytics --save
+```
+
+yarn:
+
+```
+yarn add @lawlin/expo-mixpanel-analytics -D
 ```
 
 ## Import
 
 Your React Native app's screen resolution, app name, app ID, app version, device information and multiple other parameters will be automatically resolved and sent with each event.
+
 ```
-import ExpoMixpanelAnalytics from '@benawad/expo-mixpanel-analytics';
+import ExpoMixpanelAnalytics from '@lawlin/expo-mixpanel-analytics';
 ```
 
 ## Usage
+
 ```
 const analytics = new ExpoMixpanelAnalytics("5224da5bbbed3fdeaad0911820f1bf2x");
 
@@ -42,9 +51,13 @@ analytics.people_union({ "Items purchased": ["socks", "shirts"] });
 
 analytics.people_delete_user();
 
+analytics.time_event("Registered");
+analytics.track("Registered", {"Gender": "Female", "Age": 25 })
+
 analytics.reset();
 
 ```
 
 ## References
+
 https://mixpanel.com/help/reference/http
