@@ -1,6 +1,6 @@
 {
   "name": "@lawrencelin/expo-mixpanel-analytics",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Mixpanel integration for use with React Native apps built on Expo 39, with time_event support",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
