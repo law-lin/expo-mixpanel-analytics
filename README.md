@@ -9,13 +9,13 @@ Forked from `@bothrs/expo-mixpanel-analytics` to add functionality that simulate
 npm:
 
 ```
-npm install @lawlin/expo-mixpanel-analytics --save
+npm install @law-lin/expo-mixpanel-analytics --save
 ```
 
 yarn:
 
 ```
-yarn add @lawlin/expo-mixpanel-analytics -D
+yarn add @law-lin/expo-mixpanel-analytics -D
 ```
 
 ## Import
@@ -23,7 +23,7 @@ yarn add @lawlin/expo-mixpanel-analytics -D
 Your React Native app's screen resolution, app name, app ID, app version, device information and multiple other parameters will be automatically resolved and sent with each event.
 
 ```
-import ExpoMixpanelAnalytics from '@lawlin/expo-mixpanel-analytics';
+import ExpoMixpanelAnalytics from '@law-lin/expo-mixpanel-analytics';
 ```
 
 ## Usage
